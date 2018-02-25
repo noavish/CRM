@@ -1,0 +1,16 @@
+Add a new company:
+<div class="input-field col s4">
+  <input [(ngModel)]="companyName" placeholder="Company Name" id="Company_name" type="text" class="validate">
+  <label for="company_name">Company Name</label>
+</div>
+<div class="input-field col s4">
+  <input [(ngModel)]="address" placeholder="Address" id="address" type="text" class="validate">
+  <label for="address">Address</label>
+</div>
+<div class="input-field col s4">
+  <input [(ngModel)]="country" placeholder="Address" id="country" type="text" class="validate">
+  <label for="country">Country</label>
+</div>
+<button class="btn waves-effect waves-light" type="button" name="action" (click)="addCompanyClicked()">
+  <i class="material-icons right">send</i>
+</button>

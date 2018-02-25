@@ -1,0 +1,24 @@
+Add a new customer:
+<div class="input-field col s4">
+  <input [(ngModel)]="first_name" placeholder="First Name" id="first_name" type="text" class="validate">
+  <label for="first_name">First Name</label>
+</div>
+<div class="input-field col s4">
+  <input [(ngModel)]="last_name" placeholder="Last Name" id="last_name" type="text" class="validate">
+  <label for="last_name">Last Name</label>
+</div>
+<div class="input-field col s4">
+  <input [(ngModel)]="company_name" placeholder="Company Name" id="company_name" type="text" class="validate">
+  <label for="company_name">Company Name</label>
+</div>
+<div class="input-field col s4">
+  <input [(ngModel)]="email" placeholder="Email" id="email" type="text" class="validate">
+  <label for="email">Email</label>
+</div>
+<div class="input-field col s4">
+  <input [(ngModel)]="phone" placeholder="Phone Number" id="phone" type="number" class="validate">
+  <label for="phone">Phone Number</label>
+</div>
+<button class="btn waves-effect waves-light" type="button" name="action" (click)="addCustomerClicked()">
+  <i class="material-icons right">send</i>
+</button>

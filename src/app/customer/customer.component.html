@@ -1,0 +1,13 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="row" *ngFor="let customer of customers; let i = index">
+    <div class="col s2">{{customer.company_name}}</div>
+    <div class="col s2">{{customer.customer_id}}</div>
+    <div class="col s2"><a routerLink='/customerView/{{customer.customer_id}}'>{{customer.first_name}}</a></div>
+    <div class="col s2">{{customer.last_name}}</div>
+    <div class="col s2">{{customer.phone}}</div>
+    <div class="col s2"><button type="button" (click)="deleteCustomerClicked(customer)">Delete</button></div>
+  </div>
+</div>
+<a routerLink='/addCompany'>Add Customer</a>
+

@@ -1,4 +1,6 @@
 <app-nav-bar></app-nav-bar>
+<h3>All Customers: </h3>
+<app-filter (searchChanged)="updateSearchTerm($event)"></app-filter>
 <div class="container">
   <div class="row" *ngFor="let customer of customers; let i = index">
     <div class="col s2">{{customer.company_name}}</div>
@@ -9,5 +11,5 @@
     <div class="col s2"><button type="button" (click)="deleteCustomerClicked(customer)">Delete</button></div>
   </div>
 </div>
-<a routerLink='/addCompany'>Add Customer</a>
+<a routerLink='/addCustomer'><button>Add Customer</button></a>
 

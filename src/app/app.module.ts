@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 import { AppComponent } from './app.component';
@@ -17,6 +19,9 @@ import { HomeComponent } from './home/home.component';
 import { CustomerViewComponent } from './customerView/customerView.component';
 import { NewCompanyComponent } from './new-company/new-company.component';
 import { NewCustomerComponent } from './new-customer/new-customer.component';
+import { FilterComponent } from './filter/filter.component';
+import { CommentService } from "./comment.service";
+import { AddCommentComponent } from './add-comment/add-comment.component';
 
 
 @NgModule({
@@ -29,7 +34,9 @@ import { NewCustomerComponent } from './new-customer/new-customer.component';
     HomeComponent,
     CustomerViewComponent,
     NewCompanyComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    FilterComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,7 @@ import { NewCustomerComponent } from './new-customer/new-customer.component';
     MaterializeModule,
     FormsModule
   ],
-  providers: [CustomerService, CompanyService],
+  providers: [CustomerService, CompanyService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

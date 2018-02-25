@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../../models/customerModel';
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -10,19 +11,15 @@ import { Customer } from '../../models/customerModel';
 })
 export class CustomerComponent implements OnInit {
   customers: Customer[];
-  first_name: string;
-  last_name: string;
-  company_name: number;
-  email: string;
-  phone: number;
-  constructor(private customerService: CustomerService) { }
+  searchTerm: string = '';
+  constructor(private customerService: CustomerService,  private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getCustomers();
   }
 
   getCustomers() {
-    this.customerService.getAllCustomers().subscribe(
+    this.customerService.getAllCustomers(this.searchTerm).subscribe(
       customers => {
         this.customers = customers;
         console.log(this.customers);
@@ -32,34 +29,32 @@ export class CustomerComponent implements OnInit {
       });
   }
 
-  addCustomerClicked() {
-    const customer = {
-      customer_id: 0,
-      first_name: this.first_name,
-      last_name: this.last_name,
-      company_name: this.company_name,
-      email: this.email,
-      phone: this.phone
-    };
-    this.customerService.addCustomerToDB(customer).subscribe(
-      data => {
-        console.log(data);
-        this.getCustomers();
-      },
-      error => {
-        console.log(error);
-      });
-  }
-
   deleteCustomerClicked(customer: Customer) {
     this.customerService.deleteCustomerFromDB(customer).subscribe(
       data => {
-        console.log(data);
         this.getCustomers();
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  updateSearchTerm(searchTerm) {
+    this.searchTerm = searchTerm;
+    this.searchByInput();
+  }
+
+  searchByInput() {
+    console.log(this.searchTerm);
+    this.customerService.getAllCustomers(this.searchTerm).subscribe(
+      customers => {
+        console.log(customers);
+        this.customers = customers;
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 }

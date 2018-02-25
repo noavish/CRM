@@ -1,12 +1,31 @@
 <app-nav-bar></app-nav-bar>
 <div class="container">
+  <h3>Customer Details:</h3>
+  <div class="col s10"><button type="button" (click)="deleteCustomerClicked(customer)">Delete</button></div>
   <div class="row">
-    <div class="col s10">{{customer.company_name}}</div>
-    <div class="col s10">{{customer.customer_id}}</div>
-    <div class="col s10">{{customer.first_name}}</div>
-    <div class="col s10">{{customer.last_name}}</div>
-    <div class="col s10">{{customer.email}}</div>
-    <div class="col s10">{{customer.phone}}</div>
-    <div class="col s10"><button type="button" (click)="deleteCustomerClicked(customer)">Delete</button></div>
+    <div class="col s10">{{customer?.company_name}}</div>
+    <div class="col s10">{{customer?.customer_id}}</div>
+    <div class="col s10">{{customer?.first_name}}</div>
+    <div class="col s10">{{customer?.last_name}}</div>
+    <div class="col s10">{{customer?.email}}</div>
+    <div class="col s10">{{customer?.phone}}</div>
+  </div>
+  <div>
+    <h4>Comments</h4>
+    <app-add-comment (addCommentClicked)="addCommentToCustomer($event)"></app-add-comment>
+    <table>
+      <thead>
+      <tr>
+        <th>Comment ID</th>
+        <th>Date</th>
+        <th>Comment</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let comment of comments; let i = index">
+        <app-comment [comment]='comment'></app-comment>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>

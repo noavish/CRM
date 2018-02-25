@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import { CustomerService } from '../customer.service';
+import { Customer } from '../../models/customerModel';
+import { Comment } from '../../models/commentModel';
+import { CommentService } from '../comment.service';
 
 @Component({
   selector: 'app-comment',
@@ -6,10 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent implements OnInit {
-
-  constructor() { }
+  @Input() comment: Comment = new Comment();
+  constructor( private commentService: CommentService, private customerService: CustomerService ) { }
 
   ngOnInit() {
+
   }
 
 }

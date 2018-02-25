@@ -1,4 +1,5 @@
 <app-nav-bar></app-nav-bar>
+<h3>All Companies: </h3>
 <div class="container">
   <div class="row" *ngFor="let company of companies; let i = index">
     <div class="col s2">{{company.company_id}}</div>
@@ -8,4 +9,4 @@
     <div class="col s2">{{company.customer_amount}}</div>
   </div>
 </div>
-<button><a routerLink='/addCompany'>Add Company</a></button>
+<a routerLink='/addCompany'><button>Add Company</button></a>

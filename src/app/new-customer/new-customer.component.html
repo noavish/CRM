@@ -1,47 +1,49 @@
 <app-nav-bar></app-nav-bar>
-<h3>Add a new customer:</h3>
+<span class="title">Add a new customer:</span>
 <form class="col s8 form">
-    <div class="input-field col s6">
-      <input [(ngModel)]="customer.first_name" placeholder="First Name" name="first_name" type="text" class="validate">
-      <label for="first_name">First Name</label>
-    </div>
+  <mat-form-field>
+    <mat-select [(value)]="customer.company_name" placeholder="Company Name">
+      <mat-option value="" disabled>Select</mat-option>
+      <mat-option value={{company.company_name}} *ngFor="let company of companies; let i = index">{{company.company_name}}</mat-option>
+      <mat-option value="other">Other</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-    <div class="input-field col s6">
-      <input [(ngModel)]="customer.last_name" placeholder="Last Name" name="last_name" type="text" class="validate">
-      <label for="last_name">Last Name</label>
-    </div>
+  <mat-form-field>
+    <input matInput placeholder="First Name" [(ngModel)]="customer.first_name" name="first_name">
+  </mat-form-field>
+
+  <mat-form-field class="input-field col s6">
+    <input matInput [(ngModel)]="customer.last_name" placeholder="Last Name" name="last_name" class="validate">
+  </mat-form-field>
+
+
+
 
     <!--<div class="input-field col s6">-->
-      <!--<input [(ngModel)]="company_name" placeholder="Company Name" name="company_name" type="text" class="validate">-->
-      <!--<label for="company_name">Company Name</label>-->
+        <!--<select materialize="material_select" title="company" [(ngModel)]="customer.company_name" name="company_name">-->
+          <!--<option value="" disabled>Select</option>-->
+          <!--<option value={{company.company_name}} *ngFor="let company of companies; let i = index">{{company.company_name}}</option>-->
+          <!--<option value="other">Other</option>-->
+        <!--</select>-->
+        <!--<label>Company Name</label>-->
     <!--</div>-->
 
-    <div class="input-field col s6">
-        <select materialize="material_select" title="company" [(ngModel)]="customer.company_name" name="company_name">
-          <option value="" disabled>Select</option>
-          <option value={{company.company_name}} *ngFor="let company of companies; let i = index">{{company.company_name}}</option>
-          <option value="other">Other</option>
-        </select>
-        <label>Company Name</label>
-    </div>
+    <a mat-raised-button routerLink='/addCompany' *ngIf="customer.company_name == 'other'" type="button" name="action" (click)="addCustomerClicked()">
+      Add Company
+    </a>
 
-    <a routerLink='/addCompany'><button *ngIf="customer.company_name == 'other'" class="btn waves-effect waves-light col s6" type="button" name="action" (click)="addCustomerClicked()">
-      <i class="material-icons right">Add Company</i>
-    </button></a>
+    <mat-form-field class="input-field col s6">
+      <input matInput [(ngModel)]="customer.email" placeholder="Email" name="email" class="validate">
+    </mat-form-field>
 
-    <div class="input-field col s6">
-      <input [(ngModel)]="customer.email" placeholder="Email" name="email" type="text" class="validate">
-      <label for="email">Email</label>
-    </div>
+    <mat-form-field class="input-field col s6">
+      <input matInput [(ngModel)]="phone" placeholder="Phone Number" name="phone" class="validate">
+    </mat-form-field>
 
-    <div class="input-field col s6">
-      <input [(ngModel)]="phone" placeholder="Phone Number" name="phone" type="number" class="validate">
-      <label for="phone">Phone Number</label>
-    </div>
-
-    <button class="btn waves-effect waves-light col s6" type="button" name="action" (click)="addCustomerClicked()">
-      <i class="material-icons right">send</i>
-    </button>
+  <button mat-raised-button color="primary" type="button" name="action" (click)="addCustomerClicked()">
+    Send
+  </button>
 </form>
 
 

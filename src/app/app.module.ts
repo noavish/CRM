@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MaterializeModule } from 'angular2-materialize';
+// import { MaterializeModule } from 'angular2-materialize';
 import { FormsModule } from '@angular/forms';
 
 
@@ -23,9 +23,10 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-
 
 
 
@@ -47,14 +48,17 @@ import {MatInputModule} from '@angular/material/input';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterializeModule,
+    // MaterializeModule,
     FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatTableModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatSelectModule
   ],
   providers: [CustomerService, CompanyService, CommentService],
   bootstrap: [AppComponent]

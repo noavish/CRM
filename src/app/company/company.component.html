@@ -1,12 +1,52 @@
 <app-nav-bar></app-nav-bar>
 <h3>All Companies: </h3>
-<div class="container">
-  <div class="row" *ngFor="let company of companies; let i = index">
-    <div class="col s2">{{company.company_id}}</div>
-    <div class="col s2">{{company.company_name}}</div>
-    <div class="col s2">{{company.address}}</div>
-    <div class="col s2">{{company.country}}</div>
-    <div class="col s2">{{company.customer_amount}}</div>
-  </div>
+<a routerLink='/addCompany'><button class="mat-raised-button">Add Company</button></a>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="company_id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Company ID </mat-header-cell>
+      <mat-cell *matCellDef="let company"> {{company.company_id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="company_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Company name </mat-header-cell>
+      <mat-cell *matCellDef="let company"> <a routerLink='/customerView/'>{{company.company_name}}</a> </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+      <mat-cell *matCellDef="let company">{{company.address}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="country">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Country </mat-header-cell>
+      <mat-cell *matCellDef="let company"> {{company.country}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="customer_amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Customer Amount </mat-header-cell>
+      <mat-cell *matCellDef="let company"> {{company.customer_amount}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let company"> <button type="button" (click)="deleteCompanyClicked(company)">Delete</button></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
-<a routerLink='/addCompany'><button>Add Company</button></a>
+
+
+<!--<div class="container">-->
+  <!--<div class="row" *ngFor="let company of companies; let i = index">-->
+    <!--<div class="col s2">{{company.company_id}}</div>-->
+    <!--<div class="col s2">{{company.company_name}}</div>-->
+    <!--<div class="col s2">{{company.address}}</div>-->
+    <!--<div class="col s2">{{company.country}}</div>-->
+    <!--<div class="col s2">{{company.customer_amount}}</div>-->
+  <!--</div>-->
+<!--</div>-->

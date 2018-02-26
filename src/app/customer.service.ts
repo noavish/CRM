@@ -30,7 +30,6 @@ export class CustomerService {
   }
 
   addCommentToDB(comment: Comment): Observable<Comment> {
-    console.log(comment);
     return this.http.post<Comment>(`/api/customers/customerView/${comment.customer_id}/addComment`, comment);
   }
 }

@@ -1,25 +1,51 @@
 <app-nav-bar></app-nav-bar>
 <h3>Add a new customer:</h3>
-<div class="input-field col s4">
-  <input [(ngModel)]="first_name" placeholder="First Name" id="first_name" type="text" class="validate">
-  <label for="first_name">First Name</label>
-</div>
-<div class="input-field col s4">
-  <input [(ngModel)]="last_name" placeholder="Last Name" id="last_name" type="text" class="validate">
-  <label for="last_name">Last Name</label>
-</div>
-<div class="input-field col s4">
-  <input [(ngModel)]="company_name" placeholder="Company Name" id="company_name" type="text" class="validate">
-  <label for="company_name">Company Name</label>
-</div>
-<div class="input-field col s4">
-  <input [(ngModel)]="email" placeholder="Email" id="email" type="text" class="validate">
-  <label for="email">Email</label>
-</div>
-<div class="input-field col s4">
-  <input [(ngModel)]="phone" placeholder="Phone Number" id="phone" type="number" class="validate">
-  <label for="phone">Phone Number</label>
-</div>
-<button class="btn waves-effect waves-light" type="button" name="action" (click)="addCustomerClicked()">
-  <i class="material-icons right">send</i>
-</button>
+<form class="col s8 form">
+    <div class="input-field col s6">
+      <input [(ngModel)]="customer.first_name" placeholder="First Name" name="first_name" type="text" class="validate">
+      <label for="first_name">First Name</label>
+    </div>
+
+    <div class="input-field col s6">
+      <input [(ngModel)]="customer.last_name" placeholder="Last Name" name="last_name" type="text" class="validate">
+      <label for="last_name">Last Name</label>
+    </div>
+
+    <!--<div class="input-field col s6">-->
+      <!--<input [(ngModel)]="company_name" placeholder="Company Name" name="company_name" type="text" class="validate">-->
+      <!--<label for="company_name">Company Name</label>-->
+    <!--</div>-->
+
+    <div class="input-field col s6">
+        <select materialize="material_select" title="company" [(ngModel)]="customer.company_name" name="company_name">
+          <option value="" disabled>Select</option>
+          <option value={{company.company_name}} *ngFor="let company of companies; let i = index">{{company.company_name}}</option>
+          <option value="other">Other</option>
+        </select>
+        <label>Company Name</label>
+    </div>
+
+    <a routerLink='/addCompany'><button *ngIf="customer.company_name == 'other'" class="btn waves-effect waves-light col s6" type="button" name="action" (click)="addCustomerClicked()">
+      <i class="material-icons right">Add Company</i>
+    </button></a>
+
+    <div class="input-field col s6">
+      <input [(ngModel)]="customer.email" placeholder="Email" name="email" type="text" class="validate">
+      <label for="email">Email</label>
+    </div>
+
+    <div class="input-field col s6">
+      <input [(ngModel)]="phone" placeholder="Phone Number" name="phone" type="number" class="validate">
+      <label for="phone">Phone Number</label>
+    </div>
+
+    <button class="btn waves-effect waves-light col s6" type="button" name="action" (click)="addCustomerClicked()">
+      <i class="material-icons right">send</i>
+    </button>
+</form>
+
+
+
+
+
+

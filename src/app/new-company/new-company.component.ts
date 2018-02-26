@@ -9,9 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./new-company.component.css']
 })
 export class NewCompanyComponent implements OnInit {
-  companyName: string;
-  address: string;
-  country: string;
+  company: Company = new Company();
 
   constructor(private companyService: CompanyService, private router: Router) { }
 
@@ -19,10 +17,9 @@ export class NewCompanyComponent implements OnInit {
   }
 
   addCompanyClicked() {
-    const company = new Company(this.companyName, this.address, this.country);
-    this.companyService.addCompanyToDB(company).subscribe(
+    this.companyService.addCompanyToDB(this.company).subscribe(
       data => {
-        console.log(data);
+        console.log("a",data);
         this.router.navigate(['/companies']);
       },
       error => {

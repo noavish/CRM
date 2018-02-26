@@ -1,15 +1,60 @@
 <app-nav-bar></app-nav-bar>
 <h3>All Customers: </h3>
 <app-filter (searchChanged)="updateSearchTerm($event)"></app-filter>
-<div class="container">
-  <div class="row" *ngFor="let customer of customers; let i = index">
-    <div class="col s2">{{customer.company_name}}</div>
-    <div class="col s2">{{customer.customer_id}}</div>
-    <div class="col s2"><a routerLink='/customerView/{{customer.customer_id}}'>{{customer.first_name}}</a></div>
-    <div class="col s2">{{customer.last_name}}</div>
-    <div class="col s2">{{customer.phone}}</div>
-    <div class="col s2"><button type="button" (click)="deleteCustomerClicked(customer)">Delete</button></div>
-  </div>
-</div>
 <a routerLink='/addCustomer'><button>Add Customer</button></a>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="customer_id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Customer ID </mat-header-cell>
+      <mat-cell *matCellDef="let customer"> {{customer.customer_id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="first_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> First name </mat-header-cell>
+      <mat-cell *matCellDef="let customer"> <a routerLink='/customerView/{{customer.customer_id}}'>{{customer.first_name}}</a> </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="last_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Last name </mat-header-cell>
+      <mat-cell *matCellDef="let customer"> {{customer.last_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="company_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Company name </mat-header-cell>
+      <mat-cell *matCellDef="let customer"> {{customer.company_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+      <mat-cell *matCellDef="let customer"> {{customer.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+      <mat-cell *matCellDef="let customer"> {{customer.phone}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let customer"> <button type="button" (click)="deleteCustomerClicked(customer)">Delete</button></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+
+<!--<div class="container">-->
+  <!--<div class="row" *ngFor="let customer of customers; let i = index">-->
+    <!--<div class="col s2">{{customer.company_name}}</div>-->
+    <!--<div class="col s2">{{customer.customer_id}}</div>-->
+    <!--<div class="col s2"><a routerLink='/customerView/{{customer.customer_id}}'>{{customer.first_name}}</a></div>-->
+    <!--<div class="col s2">{{customer.last_name}}</div>-->
+    <!--<div class="col s2">{{customer.phone}}</div>-->
+    <!--<div class="col s2"><button type="button" (click)="deleteCustomerClicked(customer)">Delete</button></div>-->
+  <!--</div>-->
+<!--</div>-->
 

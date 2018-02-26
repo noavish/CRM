@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
 import { FormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
-
 
 
 import { AppComponent } from './app.component';
@@ -22,6 +20,13 @@ import { NewCustomerComponent } from './new-customer/new-customer.component';
 import { FilterComponent } from './filter/filter.component';
 import { CommentService } from "./comment.service";
 import { AddCommentComponent } from './add-comment/add-comment.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+
+
 
 
 @NgModule({
@@ -43,7 +48,13 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
     AppRoutingModule,
     HttpClientModule,
     MaterializeModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [CustomerService, CompanyService, CommentService],
   bootstrap: [AppComponent]

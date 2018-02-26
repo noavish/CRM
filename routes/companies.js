@@ -33,5 +33,26 @@ router.post('/', function (req, res, next) {
   });
 });
 
+router.get('/names', function (req, res, next) {
+  connection.query('select company_name from companies', function(err, rows, fields) {
+    console.log(rows)
+    if (!err)
+      res.send(rows);
+
+    else
+      res.send('Error while performing Query.');
+  });
+  // connection.end();
+});
+
+router.delete('/:company_id', function (req, res, next) {
+  console.log(req.params.company_id)
+  connection.query('delete from companies where company_id = ?', [req.params.company_id], function(err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
 
 module.exports = router;

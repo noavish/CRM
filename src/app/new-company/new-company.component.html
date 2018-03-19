@@ -1,19 +1,21 @@
 <app-nav-bar></app-nav-bar>
-<h3>Add a new company:</h3>
+<span class="title">Add a new company:</span>
 <form class="col s8 form">
-    <div class="input-field col s6">
-      <input [(ngModel)]="company.company_name" name='company.company_name' placeholder="Company Name" id="Company_name" type="text" class="validate">
-      <label for="company_name">Company Name</label>
-    </div>
-    <div class="input-field col s6">
-      <input [(ngModel)]="company.address" name='company.address' placeholder="Address" id="address" type="text" class="validate">
-      <label for="address">Address</label>
-    </div>
-    <div class="input-field col s6">
-      <input [(ngModel)]="company.country" name='company.country' placeholder="Address" id="country" type="text" class="validate">
-      <label for="country">Country</label>
-    </div>
+    <mat-form-field class="input-field col s6">
+      <input matInput placeholder="Company name" [(ngModel)]="company.company_name" name="company_name">
+    </mat-form-field>
+
+    <mat-form-field class="input-field col s6">
+      <input matInput placeholder="Address" [(ngModel)]="company.address" name="address">
+    </mat-form-field>
+
+    <mat-form-field -field class="input-field col s6">
+      <input matInput placeholder="Country" [(ngModel)]="company.country" name="country">
+    </mat-form-field>
+
     <button class="btn waves-effect waves-light" type="button" name="action" (click)="addCompanyClicked()">
       <i class="material-icons right">send</i>
     </button>
 </form>
+
+
